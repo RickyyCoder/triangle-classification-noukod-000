@@ -1,20 +1,17 @@
-class TriangleError < StandardError
-end
+class Triangle
+  # write code here
+  attr_accessor :a, :b, :c
 
- class Triangle	
-   attr_accessor :a, :b, :c
-
-   def initialize(a, b, c)
-    @a, @b, @c = a, b, c
+  def initialize(a, b, c)
+    @a = a
+    @b = b
+    @c = c
   end
 
-   def kind
-    min, min2, max = [@a, @b, @c].sort
-    if min < 0 ||  min + min2 <= max
+  def kind
+    if @a <= 0 || @b <=0 || @c <= 0 || @a + @b <= @c || @a + @c <= @b || @b + @c <= @a
       raise TriangleError
-    end
-
-     if @a == @b && @b == c
+    elsif @a == @b && @a == @c
       :equilateral
     elsif @a == @b || @a == @c || @b == @c
       :isosceles
@@ -23,4 +20,10 @@ end
     end
   end
 
- end
+  class TriangleError < StandardError
+    def message
+      "check numbers"
+    end
+  end
+
+end
