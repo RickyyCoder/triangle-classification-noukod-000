@@ -2,8 +2,7 @@ class TriangleError < StandardError
 end
 
 class Triangle
-  # write code here
-end 
+
 
   attr_accessor :a, :b, :c
 
